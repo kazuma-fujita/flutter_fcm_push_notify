@@ -20,11 +20,13 @@ class _Permissions extends State<Permissions> {
       _fetching = true;
     });
 
-    final settings = await FirebaseMessaging.instance.requestPermission(
-      announcement: true,
-      carPlay: true,
-      criticalAlert: true,
-    );
+    // final settings = await FirebaseMessaging.instance.requestPermission(
+    //   announcement: true,
+    //   carPlay: true,
+    //   criticalAlert: true,
+    // );
+
+    final settings = await FirebaseMessaging.instance.requestPermission();
 
     setState(() {
       _requested = true;
