@@ -14,7 +14,7 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		A4746467261332A2000540E2 /* GoogleService-Info.dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4746464261332A2000540E2 /* GoogleService-Info.dev.plist */; };
+		A403C2D42614278300AD1071 /* GoogleService-Info.dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = A403C2D32614278300AD1071 /* GoogleService-Info.dev.plist */; };
 		A4746468261332A2000540E2 /* GoogleService-Info.stg.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4746465261332A2000540E2 /* GoogleService-Info.stg.plist */; };
 		A4746469261332A2000540E2 /* GoogleService-Info.prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4746466261332A2000540E2 /* GoogleService-Info.prod.plist */; };
 /* End PBXBuildFile section */
@@ -48,8 +48,8 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A403C2D32614278300AD1071 /* GoogleService-Info.dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.dev.plist"; sourceTree = "<group>"; };
 		A4067FCC2604AF9F00CE5695 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
-		A4746464261332A2000540E2 /* GoogleService-Info.dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.dev.plist"; sourceTree = "<group>"; };
 		A4746465261332A2000540E2 /* GoogleService-Info.stg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.stg.plist"; sourceTree = "<group>"; };
 		A4746466261332A2000540E2 /* GoogleService-Info.prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.prod.plist"; sourceTree = "<group>"; };
 		B3214D9E554D2C0934A98D96 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		A474646326133296000540E2 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				A4746464261332A2000540E2 /* GoogleService-Info.dev.plist */,
+				A403C2D32614278300AD1071 /* GoogleService-Info.dev.plist */,
 				A4746466261332A2000540E2 /* GoogleService-Info.prod.plist */,
 				A4746465261332A2000540E2 /* GoogleService-Info.stg.plist */,
 			);
@@ -210,8 +210,8 @@
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				A4746469261332A2000540E2 /* GoogleService-Info.prod.plist in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
-				A4746467261332A2000540E2 /* GoogleService-Info.dev.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
+				A403C2D42614278300AD1071 /* GoogleService-Info.dev.plist in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				A4746468261332A2000540E2 /* GoogleService-Info.stg.plist in Resources */,
 			);
@@ -285,7 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"run start\"\nif [ \"${$BUILD_ENV}\" = \"dev\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.dev.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Debug GoogleService-Info copied.\"\nelif [ \"${BUILD_ENV}\" = \"stg\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.stg.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Staging GoogleService-Info copied.\"\nelif [ \"${BUILD_ENV}\" = \"prod\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.prod.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Production GoogleService-Info copied.\"\nfi\necho \"run end\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\necho \"run start\"\nif [ \"${BUILD_ENV}\" = \"dev\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.dev.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Debug GoogleService-Info copied.\"\nelif [ \"${BUILD_ENV}\" = \"stg\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.stg.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Staging GoogleService-Info copied.\"\nelif [ \"${BUILD_ENV}\" = \"prod\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configurations/GoogleService-Info.prod.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Production GoogleService-Info copied.\"\nfi\necho \"run end\"\n";
 		};
 		AAF58A5E7FECCDE8C47022D6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -392,7 +392,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(BUNDLE_ID_SUFFIX)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -403,7 +403,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.flutter-fcm-push-notify";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.flutter-fcm-push-notify$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -461,6 +461,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -522,7 +523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(BUNDLE_ID_SUFFIX)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -533,7 +534,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.flutter-fcm-push-notify";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.flutter-fcm-push-notify$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -546,7 +547,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon$(BUNDLE_ID_SUFFIX)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -557,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.flutter-fcm-push-notify";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.flutter-fcm-push-notify$(BUNDLE_ID_SUFFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
