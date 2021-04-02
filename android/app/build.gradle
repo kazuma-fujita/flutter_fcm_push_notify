@@ -21,6 +21,33 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+// ========================== Start adding ============================
+// 環境変数配列
+def dartEnvironmentVariables = [
+        BUNDLE_ID_SUFFIX: null,
+        BUILD_ENV: ''
+]
+// --dart-define読み込み
+if (project.hasProperty('dart-defines')) {
+    dartEnvironmentVariables = dartEnvironmentVariables + project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = URLDecoder.decode(entry, 'UTF-8').split('=')
+                [(pair.first()): pair.last()]
+            }
+}
+// デフォルトアプリ表示名
+def appName = "App"
+// ランチャーアイコンパス
+def launcherIconPath = "@mipmap/ic_launcher"
+def launcherRoundIconPath = "@mipmap/ic_launcher_round"
+if (dartEnvironmentVariables.BUNDLE_ID_SUFFIX != null) {
+    appName = dartEnvironmentVariables.BUNDLE_ID_SUFFIX
+    launcherIconPath += "_${dartEnvironmentVariables.BUILD_ENV}"
+    launcherRoundIconPath += "_${dartEnvironmentVariables.BUILD_ENV}"
+}
+// ========================== End adding ============================
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -40,6 +67,16 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        // Start adding
+        if (dartEnvironmentVariables.BUNDLE_ID_SUFFIX != null) {
+            applicationIdSuffix dartEnvironmentVariables.BUNDLE_ID_SUFFIX
+        }
+        manifestPlaceholders = [
+                appName: appName,
+                launcherIcon: launcherIconPath,
+                roundLauncherIcon: launcherRoundIconPath
+        ]
+        // End adding
     }
 
     buildTypes {
